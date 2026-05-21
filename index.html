@@ -4,273 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Formulario de Contacto</title>
-  <style>
-    :root {
-      --primary: #8f8f8f;
-      --portafolio: #298b81;
-      --secondary: #c1ccca;
-      --light: #f5f5f5;
-      --dark: #333;
-      --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
-
-    body {
-      background-color: var(--light);
-      color: var(--dark);
-      line-height: 1.6;
-    }
-
-    .container {
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 2rem;
-    }
-
-    header {
-      text-align: center;
-      margin-bottom: 3rem;
-    }
-
-    .logo {
-      margin-bottom: 1rem;
-    }
-
-    .logo img {
-      height: 80px;
-      width: auto;
-    }
-
-    h1 {
-      color: var(--secondary);
-      margin-bottom: 0.5rem;
-    }
-
-    .form-steps {
-      display: flex;
-      justify-content: center;
-      margin-bottom: 2rem;
-    }
-
-    .step {
-      width: 30px;
-      height: 30px;
-      border-radius: 50%;
-      background-color: #ccc;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 10px;
-      position: relative;
-      color: white;
-      font-weight: bold;
-    }
-
-    .step.active {
-      background-color: var(--secondary);
-    }
-
-    .step.completed {
-      background-color: var(--primary);
-    }
-
-    .step::after {
-      content: '';
-      position: absolute;
-      width: 20px;
-      height: 2px;
-      background-color: #ccc;
-      right: -20px;
-    }
-
-    .step:last-child::after {
-      display: none;
-    }
-
-    .form-container {
-      background-color: white;
-      padding: 2rem;
-      border-radius: 8px;
-      box-shadow: var(--shadow);
-    }
-
-    .form-step {
-      display: none;
-    }
-
-    .form-step.active {
-      display: block;
-    }
-
-    .form-group {
-      margin-bottom: 1.5rem;
-    }
-
-    label {
-      display: block;
-      margin-bottom: 0.5rem;
-      font-weight: 600;
-    }
-
-    input, select {
-      width: 100%;
-      padding: 0.75rem;
-      border: 1px solid #ddd;
-      border-radius: 4px;
-      font-size: 1rem;
-    }
-
-    input:focus, select:focus {
-      outline: none;
-      border-color: var(--primary);
-    }
-
-    .btn {
-      display: inline-block;
-      padding: 0.75rem 1.5rem;
-      background-color: var(--primary);
-      color: rgb(3, 3, 3);
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-      font-size: 1rem;
-      font-weight: 600;
-      text-align: center;
-      transition: background-color 0.3s;
-    }
-
-    .btn:hover {
-      background-color: var(--secondary);
-    }
-
-    .btn-secondary {
-      background-color: #6c757d;
-    }
-
-    .btn-secondary:hover {
-      background-color: #5a6268;
-    }
-
-    .navigation-buttons {
-      display: flex;
-      justify-content: space-between;
-      margin-top: 2rem;
-    }
-
-    .error {
-      color: #dc3545;
-      font-size: 0.875rem;
-      margin-top: 0.25rem;
-    }
-
-    .qr-message {
-      text-align: center;
-      margin-bottom: 3rem;
-      padding: 1rem;
-      background-color: #0a0a0a;
-      border-radius: 4px;
-      color: var(--secondary);
-    }
-
-    .verde-button {
-      background-color: var(--primary);
-      padding: 2rem 2rem;
-      border-radius: 4px;
-      color: rgb(255, 253, 253);
-      text-decoration: none;
-      display:inline-flex;
-      align-items: center;
-      gap: 8px;
-      margin-top: 2rem;
-      font-weight: 750;
-      transition: background-color 0.3s;
-    }
-
-    .verde-button:hover {
-      background-color: var(--secondary);
-    }
-
-    .verde-button .boton-icono {
-      width: 35px;
-      height: 35px;
-    }
-
-    .completed-message {
-      text-align: center;
-      padding: 2rem;
-    }
-
-    .completed-message img {
-      max-width: 100px;
-      margin-bottom: 1rem;
-    }
-
-    @media (max-width: 768px) {
-      .container {
-        padding: 1rem;
-      }
-      
-      .form-container {
-        padding: 1rem;
-      }
-    }
-
-    /* checkbox */
-    #privacidad {
-      appearance: none;
-      -webkit-appearance: none;
-      width: 20px;
-      height: 20px;
-      border: 2px solid #ccc;
-      border-radius: 4px;
-      display: inline-block;
-      position: relative;
-      cursor: pointer;
-      vertical-align: middle;
-      margin-right: 8px;
-      transition: all 0.2s ease;
-    }
-
-    #privacidad:hover {
-      border-color: #28a745;
-    }
-
-    #privacidad:checked {
-      background-color: #28a745;
-      border-color: #28a745;
-    }
-
-    #privacidad:checked::after {
-      content: "✔";
-      color: white;
-      font-size: 14px;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-    }
-
-    /* loader */
-    .spinner {
-      margin: 0 auto 1rem auto;
-      width: 50px;
-      height: 50px;
-      border: 6px solid #ccc;
-      border-top-color: #007bff;
-      border-radius: 50%;
-      animation: spin 1s linear infinite;
-    }
-
-    @keyframes spin {
-      to { transform: rotate(360deg); }
-    }
-  </style>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <div class="container">
@@ -292,6 +26,7 @@
 
     <div class="form-container">
       <form id="contactForm">
+        
         <!-- Paso 1 -->
         <div class="form-step active" id="step-1">
           <div class="form-group">
@@ -299,16 +34,19 @@
             <input type="text" id="nombre" name="nombre" required>
             <div class="error" id="nombre-error"></div>
           </div>
+
           <div class="form-group">
             <label for="email">Correo electrónico</label>
             <input type="email" id="email" name="email" required>
             <div class="error" id="email-error"></div>
           </div>
+
           <div class="form-group">
             <label for="telefono">Teléfono</label>
             <input type="tel" id="telefono" name="telefono" required>
             <div class="error" id="telefono-error"></div>
           </div>
+
           <div class="navigation-buttons">
             <div></div>
             <button type="button" class="btn" onclick="nextStep(1)">Siguiente</button>
@@ -317,52 +55,32 @@
 
         <!-- Paso 2 -->
         <div class="form-step" id="step-2">
-          <div class="form-group">
-            <label for="ciudad">Ciudad</label>
-            <input type="text" id="ciudad" name="ciudad" required>
+          <div class="form-group autocomplete-field">
+            <label for="ciudad-input">Ciudad</label>
+
+            <input type="text" id="ciudad-input" placeholder="Escribe tu ciudad..." autocomplete="off">
+            <input type="hidden" id="ciudad" name="ciudad">
+
+            <div class="autocomplete-panel" id="ciudad-list"></div>
             <div class="error" id="ciudad-error"></div>
           </div>
-          <div class="form-group">
-            <label for="origen">¿Lugar donde viste el vehículo o escaneaste el QR?</label>
-            <select id="origen" name="origen">
-              <option value="">Seleccione una opción</option>
-              <option value="QR COUNTRY CLUB">Country Club</option>
-              <option value="QR PARQUE ALEGRA">CC Parque Alegra</option>
-              <option value="QR CC VIVA">CC Viva</option>
-              <option value="QR PORTAL DEL PRADO">CC Portal del Prado</option>
-              <option value="QR CARIBE PLAZA">CC Caribe Plaza</option>
-              <option value="QR PLAZUELA">CC Plazuela</option>
-              <option value="QR LA CASTELLANA">CC La Castellana</option>
-              <option value="QR OTRO">Otro</option>
-            </select>
-              <div class="error" id="origen-error"></div>
+
+          <div class="form-group autocomplete-field">
+            <label for="origen-input">¿Lugar donde viste el vehículo o escaneaste el QR?</label>
+            <input type="text" id="origen-input" placeholder="Escribe para buscar..." autocomplete="off">
+            <input type="hidden" id="origen" name="origen">
+            <div class="autocomplete-panel" id="origen-list"></div>
+            <div class="error" id="origen-error"></div>
           </div>
-          <div class="form-group">
-            <label for="interes">Vehículo interesado</label>
-            <select id="interes" name="interes">
-              <option value="">Seleccione una opción</option>
-              <option value="SOLUTO">SOLUTO</option>
-              <option value="NIRO">NIRO</option>
-              <option value="SPORTAGE">SPORTAGE</option>
-              <option value="SORENTO">SORENTO</option>
-              <option value="SEPHIA">SEPHIA</option>
-              <option value="STONIC">STONIC</option>
-              <option value="CARNIVAL">CARNIVAL</option>
-              <option value="SELTOS">SELTOS</option>
-              <option value="EV9">EV9</option>
-              <option value="K3">K3 SEDÁN</option>
-              <option value="PICANTO">NEW PICANTO</option>
-              <option value="EKOTAXI">NEW GRAND EKOTAXI</option>
-              <option value="K3 CROSS">K3 CROSS</option>
-              <option value="EV6">EV6</option>
-              <option value="SONET">SONET</option>
-              <option value="EV5">EV5</option>
-              <option value="K4">K4 SEDÁN</option>
-              <option value="EV3">EV3</option>
-              <option value="TASMAM">TASMAN</option>
-            </select>
+
+          <div class="form-group autocomplete-field">
+            <label for="interes-input">Vehículo interesado</label>
+            <input type="text" id="interes-input" placeholder="Escribe para buscar..." autocomplete="off">
+            <input type="hidden" id="interes" name="interes">
+            <div class="autocomplete-panel" id="interes-list"></div>
             <div class="error" id="interes-error"></div>
-          </div> 
+          </div>
+
           <div class="navigation-buttons">
             <button type="button" class="btn btn-secondary" onclick="prevStep(2)">Anterior</button>
             <button type="button" class="btn" onclick="nextStep(2)">Siguiente</button>
@@ -375,16 +93,24 @@
             <label for="comentarios">Comentarios adicionales</label>
             <input type="text" id="comentarios" name="comentarios">
           </div>
+
           <div class="form-group">
             <input type="checkbox" id="privacidad" name="privacidad" required>
-            <label for="privacidad" style="display: inline;">Acepto la política de privacidad</label>
+
+            <label style="display: inline;">
+              Acepto la 
+              <span id="open-privacidad" class="link-privacidad">política de privacidad</span>
+            </label>
+
             <div class="error" id="privacidad-error"></div>
           </div>
+
           <div class="navigation-buttons" id="step-3-buttons">
             <button type="button" class="btn btn-secondary" onclick="prevStep(3)">Anterior</button>
             <button type="button" class="btn" onclick="submitForm()">Enviar</button>
           </div>
-          <div id="loading-message" class="completed-message" style="display: none; margin-top:20px; text-align:center;">
+
+          <div id="loading-message" class="completed-message" style="display:none;">
             <div class="spinner"></div>
             <h2>Enviando tu información...</h2>
             <p>Por favor espera un momento.</p>
@@ -392,167 +118,51 @@
         </div>
       </form>
 
-      <!-- Pantalla de éxito -->
-      <div id="success-message" class="completed-message" style="display: none;">
-        <img src="verificar.png" alt="OK" />
-        <h2>¡Gracias por completar el formulario!</h2>
-        <p>Un asesor se pondrá en contacto contigo pronto.</p>
-        <a href="https://wa.me/573178942092?" class="verde-button" target="_blank">
-          <img src="whatsapp.png" alt="whatsapp" class="boton-icono">Hablar con un asesor por WhatsApp 
+      <div id="success-message" class="completed-message" style="display:none;">
+        <!-- <img src="verificar.png" alt="OK" /> -->
+        <h2>✅ ¡Gracias por registrarte!</h2>
+        <p>Haz clic aquí y recibe atención inmediata vía WhatsApp:</p>
+
+        <a id="whatsapp-btn" href="#" class="verde-button" target="_blank">
+          <img src="whatsapp.png" class="boton-icono">
         </a>
-        <a href="https://fujiyama.com.co/" class="verde-button" target="_blank">
-          <img src="modelado-3d.png" alt="modelado-3d" class="boton-icono">Ver todo nuestro portafolio Kia
-        </a>
-        <a href="https://fujiyama.com.co/concesionarios" class="verde-button" target="_blank">
-          <img src="ubicacion.png" alt="ubicacion" class="boton-icono">Conocer direcciones y horarios
+
+        <h2 class="texto2">🚘También puedes conocer nuestro portafolio completo aquí:</h2>
+        <!-- <p>Haz clic aquí y recibe atención inmediata vía WhatsApp:</p> -->
+
+        <a id="whatsapp-btn" href="https://fujiyama.com.co/nuestros-vehiculos?utm_source=chatgpt.com" class="verde-button" target="_blank">
+          <img src="fujiyama-logo-negro.jpg" class="boton-icono2">
         </a>
       </div>
     </div>
   </div>
 
-  <script>
-    function showStep(stepNumber) {
-      document.querySelectorAll('.form-step').forEach(step => {
-        step.classList.remove('active');
-      });
-      document.getElementById(`step-${stepNumber}`).classList.add('active');
-      
-      document.querySelectorAll('.step').forEach(step => {
-        const stepNum = parseInt(step.dataset.step);
-        step.classList.remove('active', 'completed');
-        if (stepNum === stepNumber) {
-          step.classList.add('active');
-        } else if (stepNum < stepNumber) {
-          step.classList.add('completed');
-        }
-      });
-    }
+  <script src="script.js"></script>
+  <div id="modal-privacidad" class="modal">
+  <div class="modal-content">
+    <span class="close-modal" id="close-privacidad">&times;</span>
+    
+    <h2>Política de Tratamiento de Datos</h2>
 
-    function nextStep(currentStep) {
-      if (validateStep(currentStep)) {
-        showStep(currentStep + 1);
-      }
-    }
+    <p>
+      De conformidad con la normativa vigente en protección de datos personales,
+      autorizo el tratamiento de mis datos por parte de la empresa con fines
+      comerciales, informativos y de contacto.
+    </p>
 
-    function prevStep(currentStep) {
-      showStep(currentStep - 1);
-    }
+    <p>
+      La información suministrada será utilizada para gestionar solicitudes,
+      brindar información sobre productos y servicios, y realizar seguimiento
+      comercial relacionado con los vehículos de interés.
+    </p>
 
-    function validateStep(step) {
-      let isValid = true;
-      document.querySelectorAll(`#step-${step} .error`).forEach(error => {
-        error.textContent = '';
-      });
+    <p>
+      El titular de los datos podrá ejercer sus derechos de acceso, corrección
+      y supresión en cualquier momento mediante los canales oficiales de contacto.
+    </p>
 
-      if (step === 1) {
-        const nombre = document.getElementById('nombre').value.trim();
-        const email = document.getElementById('email').value.trim();
-        const telefono = document.getElementById('telefono').value.trim();
-        
-        if (!nombre) {
-          document.getElementById('nombre-error').textContent = 'Por favor ingrese su nombre';
-          isValid = false;
-        }
-        if (!email || !validateEmail(email)) {
-          document.getElementById('email-error').textContent = 'Por favor ingrese un correo válido';
-          isValid = false;
-        }
-        if (!telefono || !validatePhone(telefono)) {
-          document.getElementById('telefono-error').textContent = 'Por favor ingrese un teléfono válido';
-          isValid = false;
-        }
-      }
-
-      if (step === 2) {
-        const ciudad = document.getElementById('ciudad').value.trim();
-        const origen = document.getElementById('origen').value;
-        const interes = document.getElementById('interes').value;
-        
-        if (!ciudad) {
-          document.getElementById('ciudad-error').textContent = 'Por favor ingrese su ciudad';
-          isValid = false;
-        }
-        if (!origen) {
-          document.getElementById('origen-error').textContent = 'Por favor seleccione una opción';
-          isValid = false;
-        }
-        if (!interes) {
-          document.getElementById('interes-error').textContent = 'Por favor seleccione un interés';
-          isValid = false;
-        }
-      }
-
-      if (step === 3) {
-        const privacidad = document.getElementById('privacidad').checked;
-        if (!privacidad) {
-          document.getElementById('privacidad-error').textContent = 'Debe aceptar la política de privacidad';
-          isValid = false;
-        }
-      }
-
-      return isValid;
-    }
-
-    function validateEmail(email) {
-      const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      return re.test(email);
-    }
-
-    function validatePhone(phone) {
-      const re = /^[0-9]{10}$/;
-      return re.test(phone);
-    }
-
-    function submitForm() {
-      if (validateStep(3)) {
-        document.getElementById('step-3-buttons').style.display = 'none';
-        document.getElementById('loading-message').style.display = 'block';
-
-        const formData = {
-          nombre: document.getElementById('nombre').value.trim(),
-          email: document.getElementById('email').value.trim(),
-          telefono: document.getElementById('telefono').value.trim(),
-          ciudad: document.getElementById('ciudad').value.trim(),
-          origen: document.getElementById('origen').value,
-          interes: document.getElementById('interes').value,
-          comentarios: document.getElementById('comentarios').value.trim(),
-          qrSource: window.location.search || 'default'
-        };
-
-        fetch("https://script.google.com/macros/s/AKfycbz5MDILNxFzRtCsJNyoBC9pan5hu9v2eZGxpsWBC6UG08pGvD6AYDBYpTXFO5dNMrAI/exec", {
-          method: "POST",
-          body: JSON.stringify(formData)
-        })
-        .then(res => res.json())
-        .then(data => {
-          if (data.status === 'OK') {
-            const mensaje = `Hola, quiero contactar un asesor`;
-            const numeroAsesor = "573178942092";
-            const urlWhatsApp = `https://wa.me/${numeroAsesor}?text=${encodeURIComponent(mensaje)}`;
-            document.querySelector('#success-message a').href = urlWhatsApp;
-            document.getElementById('step-3').style.display = 'none';
-
-            document.getElementById('loading-message').style.display = 'none';
-            document.getElementById('success-message').style.display = 'block';
-          } else {
-            alert('Error al guardar: ' + data.message);
-            resetStep3UI();
-          }
-        })
-        .catch(err => {
-          alert('Error de conexión: ' + err);
-          resetStep3UI();
-        });
-      }
-    }
-
-    function resetStep3UI() {
-      document.getElementById('loading-message').style.display = 'none';
-      document.getElementById('step-3-buttons').style.display = 'flex';
-    }
-
-    showStep(1);
-  </script>
+    <button id="aceptar-privacidad" class="btn">Entendido</button>
+  </div>
+</div>
 </body>
 </html>
-
